@@ -1,0 +1,59 @@
+在 C++ 中，引用（Reference）提供了一种简洁且方便的方式来操作变量，其主要作用包括简化代码、传递参数和实现返回值。以下是关于 C++ 中引用操作的详细介绍：
+
+1. 引用的定义：
+   在 C++ 中，引用是一个已存在变量的别名，通过使用 `&` 符号来声明。引用必须在声明的同时进行初始化，并且初始化后就不能再引用其他对象了。
+   ```cpp
+   int original = 10;
+   int& ref = original;  // ref 是 original 的引用
+   ```
+
+2. 引用的简化代码：
+   引用可以简化对变量的操作，使得代码更容易理解和维护。
+   ```cpp
+   int original = 10;
+   int& ref = original;  
+   ref = 20;  // 实际上是修改了 original 的值
+   ```
+
+3. 引用作为函数参数：
+   引用可以作为函数的参数传递，这样可以避免拷贝大型对象，提高效率。
+   ```cpp
+   void increment(int& value) {
+      value++;
+   }
+
+   int main() {
+      int num = 5;
+      increment(num);
+      // 此时 num 的值变为 6
+      return 0;
+   }
+   ```
+
+4. 引用作为返回值：
+   函数也可以返回引用，这种用法通常用于支持连续赋值等操作。
+   ```cpp
+   int& getLargest(int& a, int& b) {
+      return (a > b) ? a : b;
+   }
+
+   int main() {
+      int x = 5, y = 10;
+      getLargest(x, y) = 100;  // 将返回的引用赋值为 100，此时 x 的值变为 100
+      return 0;
+   }
+   ```
+
+总之，引用提供了一种在 C++ 中更容易操作变量的方式，可以简化代码并增加程序的可读性。使用引用可以有效避免副本的生成，提高程序的执行效率。
+ ```cpp
+@引用
+void Increment(int*value) {
+	(*value)++;//逆向引用
+}
+int main() {
+	int a = 5;
+	Increment(&a);
+	LOG(a);
+	std::cin.get();
+}
+ ```
